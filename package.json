@@ -26,8 +26,6 @@
     "deploy": "gh-pages -d build"
   },
 
-  "homepage": "https://daiki0721.github.io/illust2picture/"
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,5 +43,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  
+  "homepage": "https://daiki0721.github.io/illust2picture/"
 }
