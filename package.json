@@ -1,5 +1,4 @@
 {
-  "homepage": "https://daiki0721.github.io/illust2picture/",
   "name": "illust2picture",
   "version": "0.1.0",
   "private": true,
@@ -26,6 +25,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+
+  "homepage": "https://daiki0721.github.io/illust2picture/"
+
   "eslintConfig": {
     "extends": [
       "react-app",
