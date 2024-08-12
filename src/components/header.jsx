@@ -4,6 +4,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
+import background from '../images/header.jpg';
+
+console.log(background);
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -12,23 +16,23 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+
+
 export default function BoxSystemProps() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={6} md={8}>
-          <Item>xs=6 md=8</Item>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={6} md={8}>
-          <Item>xs=6 md=8</Item>
+    <Box>
+      <Grid container alignItems="center" justifyContent="center">
+        <Grid item  xs={11}>
+          <Item>
+            <div style={{backgroundImage: `url('${background}')`,
+                       backgroundSize: "cover",
+                       height: "80vh",
+                        }}>
+            </div>
+          </Item>
         </Grid>
       </Grid>
     </Box>
+
   );
 }
