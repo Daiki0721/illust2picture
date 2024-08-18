@@ -1,10 +1,14 @@
-import * as React from 'react';
+import React, { Component } from "react";
+
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 import background from '../images/header.jpg';
+
+import { Link, animateScroll as scroll } from "react-scroll";
 
 console.log(background);
 
@@ -28,6 +32,19 @@ export default function BoxSystemProps() {
                        backgroundSize: "cover",
                        height: "80vh",
                         }}>
+              <Box>
+                   <Button variant="contained">
+                     <Link
+                       to="try"
+                       spy={true}
+                       smooth={true}
+                       offset={-70}
+                       duration={500}
+                    >
+                      Try it now
+                    </Link>
+                  </Button>
+              </Box>
             </div>
           </Item>
         </Grid>
