@@ -1,14 +1,18 @@
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import SNS from './ssn.jsx';
 
-export default function FixedContainer() {
+
+export default function Result() {
   return (
     <>
-      <CssBaseline />
-      <Container fixed>
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+      <Container fixed　sx={{ marginTop: '20px'　}}>
+        <Box sx={{ bgcolor: 'background.paper', height: '80vh' }}>
+          <SNS url = 'https://daiki0721.github.io/illust2picture' 
+               title = 'Illust2Picture'
+          />
+        </Box>
       </Container>
     </>
   );
