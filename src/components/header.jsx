@@ -28,7 +28,7 @@ export default function Header() {
                          duration={500}
                       >
                         Try it now.
-                      </Link>
+                       </Link>
                     </Button>
               　　</div>
             </div>

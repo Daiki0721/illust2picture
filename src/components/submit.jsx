@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
+import { Link } from "react-scroll";
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -39,10 +40,10 @@ export default function InputFileUpload(props) {
                alignItems: 'center'}}>
       <Grid 
       container spacing={2}　
-      columns={{ xs: 4, sm: 8, md: 12}}
+      columns={{ xs: 12, sm: 12, md: 12, xl: 4,}}
       justifyContent="space-evenly"
       alignItems="center" >  
-        <Grid container item justifyContent="center" xs={12} sm={4} xl={4} xxl={4} >
+        <Grid container item justifyContent="center" xs={12} sm={12} md={4} xl={4} xxl={4} >
           <Button
             component="label"
             role={undefined}
@@ -53,20 +54,27 @@ export default function InputFileUpload(props) {
             <VisuallyHiddenInput type="file" onChange={handleChange} />
           </Button>
         </Grid>
-        <Grid container item justifyContent="center" xs={12} sm={4} xl={4} xxl={4}>
-          <Box sx={{ bgcolor: '#cfe8fc', height: '45vh', width: '45vh',}}>
+        <Grid container item justifyContent="center" xs={12} sm={12} md={4} xl={4} xxl={4}>
+          <Box sx={{ bgcolor: '#cfe8fc', height: '35vh', width: '35vh',}}>
             <img src={file} alt=""  oblectFit='cover' height='100%' width='100%' />
           </Box>
         </Grid>
-        <Grid container item justifyContent="center"  xs={12} sm={4} xl={4} xxl={4}>
+        <Grid container item justifyContent="center"  xs={12} sm={12} md={4} xl={4} xxl={4}>
           <Button
             component="label"
             role={undefined}
             variant="contained"
             tabIndex={-1}
             startIcon={<ForwardIcon />}>
-            Submit
-            <VisuallyHiddenInput type="submit" />
+              <Link
+                to="submit"
+                spy={true}
+                smooth={true}
+                duration={500}
+              >
+                Submit
+                <VisuallyHiddenInput type="submit" />
+              </Link>
           </Button>
         </Grid>
       </Grid>
