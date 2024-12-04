@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from './logo.svg';
 import Header from './components/header.jsx';
 import InputFileUpload from './components/submit.jsx';
-import Reslut from './components/result.jsx';
+import Result from './components/result.jsx';
 import Footer from './components/bottom_navigation.jsx';
 
 import background from "./images/header.jpg";
@@ -15,7 +15,7 @@ class App extends Component {
       <InputFileUpload
           id="try"
       />
-      <Reslut
+      <Result
           id="submit" 
       />
       <Footer/>

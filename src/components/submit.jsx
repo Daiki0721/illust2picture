@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+
+
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -8,6 +10,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 import { Link } from "react-scroll";
+
+import axios from 'axios';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -23,11 +27,47 @@ const VisuallyHiddenInput = styled('input')({
 
 export default function InputFileUpload(props) {
   const [file, setFile] = useState();
+  const [formData, setFormData] = useState();
+  const [createdImage, setCreatedImage] = useState();
+
 
   const handleChange = (e) => {
-    console.log(e.target.files);
+    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
+
+    const files = e.target.files;
+    if (!files) return;
+    console.log(files)
+    setFormData(...files);
+    console.log(formData)
   };
+
+  const handleUploadClick = (e) => {
+    alert('Clicked!');
+    console.log('Button clicked');
+    let data = new FormData();
+    data.append('contents_image', formData);
+    data.append('style_num', 1);
+    
+
+    axios.post('http://127.0.0.1:8000/black_and_white_api/uploadimage/', data,
+        {headers: {'content-type': 'multipart/form-data',},}
+    )
+      .then(res => {setCreatedImage(res.data)})
+      .catch((err) => console.log(err))
+  };
+  
+  console.log(createdImage);
+  
+  const [style, setStyles] = useState();
+
+  useEffect(() => {
+      axios.get('http://127.0.0.1:8000/black_and_white_api/styles/2/')
+        .then(res => {setStyles(res.data)});
+  }, []);
+  
+  console.log(style);
+  
   
 
   return (
@@ -65,20 +105,25 @@ export default function InputFileUpload(props) {
             role={undefined}
             variant="contained"
             tabIndex={-1}
-            startIcon={<ForwardIcon />}>
-              <Link
+            startIcon={<ForwardIcon />}
+            >
+            　{/*
+  　　　　　　　<Link
                 to="submit"
                 spy={true}
                 smooth={true}
                 duration={500}
-              >
+              > */}
+         　　　
                 Submit
-                <VisuallyHiddenInput type="submit" />
-              </Link>
+                <VisuallyHiddenInput type="submit" onClick={(e) => handleUploadClick(e)} />
+              {/* </Link> */}
           </Button>
         </Grid>
       </Grid>
     </Box>
+    {/* <p><img src={style?.style_image} alt="" height='50px' width='50px'/></p> */}
+    <p><img src={createdImage?.created_image} alt="" height='50px' width='50px'/></p> 
   </Container>
   );
 }
