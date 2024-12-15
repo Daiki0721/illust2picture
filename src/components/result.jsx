@@ -16,6 +16,7 @@ export default function Result(props) {
                    alignItems: 'center',
                    borderRadius: '10% / 50%', }}>
           <Box sx={{ bgcolor: '#cfe8fc', height: '35vh', width: '35vh',}}>
+              <img src={props.data?.created_image} alt=""  oblectFit='cover' height='100%' width='100%' />
           </Box>
           <SNS url = 'https://daiki0721.github.io/illust2picture' 
                  title = 'Illust2Picture'/>

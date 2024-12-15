@@ -55,9 +55,13 @@ export default function InputFileUpload(props) {
     )
       .then(res => {setCreatedImage(res.data)})
       .catch((err) => console.log(err))
+
+      // 親のコンポートメントにdataを渡す。
+      props.handleValueChange(createdImage);
   };
   
   console.log(createdImage);
+
   
   const [style, setStyles] = useState();
 
@@ -72,18 +76,16 @@ export default function InputFileUpload(props) {
 
   return (
   <Container fixed id={props.id}>
-    <Box sx={{ bgcolor: 'background.paper',
-               borderRadius: '10% / 50%', 
-               height: '80vh',
-               display: 'flex',
-               justifyContent: 'space-evenly',
-               alignItems: 'center'}}>
       <Grid 
+      sx={{ bgcolor: 'background.paper',
+      borderRadius: '10% / 50%', 
+      height: '80vh',}}
       container spacing={2}　
-      columns={{ xs: 12, sm: 12, md: 12, xl: 4,}}
+      columns={{ xs: 12, sm: 12, md: 12, xl: 12, xxl: 4,}}
       justifyContent="space-evenly"
-      alignItems="center" >  
-        <Grid container item justifyContent="center" xs={12} sm={12} md={4} xl={4} xxl={4} >
+      alignItems="center" 
+      >  
+        <Grid container item justifyContent="center"  >
           <Button
             component="label"
             role={undefined}
@@ -94,17 +96,17 @@ export default function InputFileUpload(props) {
             <VisuallyHiddenInput type="file" onChange={handleChange} />
           </Button>
         </Grid>
-        <Grid container item justifyContent="center" xs={12} sm={12} md={4} xl={4} xxl={4}>
+        <Grid container item justifyContent="center" >
           <Box sx={{ bgcolor: '#cfe8fc', height: '35vh', width: '35vh',}}>
             <img src={file} alt=""  oblectFit='cover' height='100%' width='100%' />
           </Box>
         </Grid>
-        <Grid container item justifyContent="center"  xs={12} sm={12} md={4} xl={4} xxl={4}>
+        <Grid container item justifyContent="center"  >
           <Button
             component="label"
             role={undefined}
             variant="contained"
-            tabIndex={-1}
+            tabIndex={0}
             startIcon={<ForwardIcon />}
             >
             　{/*
@@ -115,15 +117,13 @@ export default function InputFileUpload(props) {
                 duration={500}
               > */}
          　　　
-                Submit
+              Submit
                 <VisuallyHiddenInput type="submit" onClick={(e) => handleUploadClick(e)} />
               {/* </Link> */}
           </Button>
         </Grid>
       </Grid>
-    </Box>
     {/* <p><img src={style?.style_image} alt="" height='50px' width='50px'/></p> */}
-    <p><img src={createdImage?.created_image} alt="" height='50px' width='50px'/></p> 
   </Container>
   );
 }
