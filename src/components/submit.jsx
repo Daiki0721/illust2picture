@@ -81,11 +81,11 @@ export default function InputFileUpload(props) {
       borderRadius: '10% / 50%', 
       height: '80vh',}}
       container spacing={2}　
-      columns={{ xs: 12, sm: 12, md: 12, xl: 12, xxl: 4,}}
+      columns={{ xs: 12, sm: 12, md: 4, xl: 4, xxl: 4,}}
       justifyContent="space-evenly"
       alignItems="center" 
       >  
-        <Grid container item justifyContent="center"  >
+        <Grid container item xs={12} sm={12} md={4} xl={4} xxl={4} justifyContent="center"  >
           <Button
             component="label"
             role={undefined}
@@ -96,12 +96,12 @@ export default function InputFileUpload(props) {
             <VisuallyHiddenInput type="file" onChange={handleChange} />
           </Button>
         </Grid>
-        <Grid container item justifyContent="center" >
+        <Grid container item s={12} sm={12} md={4} xl={4} xxl={4}  justifyContent="center" >
           <Box sx={{ bgcolor: '#cfe8fc', height: '35vh', width: '35vh',}}>
             <img src={file} alt=""  oblectFit='cover' height='100%' width='100%' />
           </Box>
         </Grid>
-        <Grid container item justifyContent="center"  >
+        <Grid container item s={12} sm={12} md={4} xl={4} xxl={4} justifyContent="center"  >
           <Button
             component="label"
             role={undefined}
