@@ -55,16 +55,15 @@ export default function InputFileUpload(props) {
         {headers: {'content-type': 'multipart/form-data',},}
     )
       .then(res => {
-        console.log('APIレスポンスの中身:', res.data);
-        setCreatedImage(res.data);
+        console.log('成功:', res.data);
+        props.setCreatedImage(res.data);
       })
 
       .catch((err) => console.log(err))
   };
 
   // 親のコンポートメントにdataを渡す。
-  props.setCreatedData(createdImage);
-  
+  //props.setCreatedData(createdImage);//  
   console.log(createdImage);
 
   
