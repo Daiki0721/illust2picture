@@ -8,21 +8,18 @@ import Footer from './components/bottom_navigation.jsx';
 import background from "./images/header.jpg";
 
 export function App() {
-  const [createdImage, setCreatedImage] = useState();
-    // ↑親コンポーネントで使う：createdImageを更新する関数を宣言
-    // ↓子コンポーネントから受け取った値で親コンポーネントのcreatedImageを更新する関数A
-    const handleValueChange = (newValue) => {
-      setCreatedImage(newValue);
-    }
+  const [createdData, setCreatedData] = useState();
+    // ↑親コンポーネントで使う：createdDataを更新する関数を宣言
+
 
   return (
     <div style={{ backgroundImage: `url(${background})` }}>
       <Header/>
       <InputFileUpload
-          id="try" handleValueChange={handleValueChange}
+          id="try" setCreatedData={setCreatedData}
       />
       <Result
-          id="submit" data={createdImage}
+          id="submit" data={createdData}
       />
       <Footer/>
     </div>

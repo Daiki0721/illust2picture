@@ -40,10 +40,11 @@ export default function InputFileUpload(props) {
     console.log(files)
     setFormData(...files);
     console.log(formData)
+
   };
 
   const handleUploadClick = (e) => {
-    alert('Clicked!');
+    alert('');
     console.log('Button clicked');
     let data = new FormData();
     data.append('contents_image', formData);
@@ -53,24 +54,19 @@ export default function InputFileUpload(props) {
     axios.post('http://127.0.0.1:8000/black_and_white_api/uploadimage/', data,
         {headers: {'content-type': 'multipart/form-data',},}
     )
-      .then(res => {setCreatedImage(res.data)})
-      .catch((err) => console.log(err))
+      .then(res => {
+        console.log('APIレスポンスの中身:', res.data);
+        setCreatedImage(res.data);
+      })
 
-      // 親のコンポートメントにdataを渡す。
-      props.handleValueChange(createdImage);
+      .catch((err) => console.log(err))
   };
+
+  // 親のコンポートメントにdataを渡す。
+  props.setCreatedData(createdImage);
   
   console.log(createdImage);
 
-  
-  const [style, setStyles] = useState();
-
-  useEffect(() => {
-      axios.get('http://127.0.0.1:8000/black_and_white_api/styles/2/')
-        .then(res => {setStyles(res.data)});
-  }, []);
-  
-  console.log(style);
   
   
 
