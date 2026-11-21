@@ -5,6 +5,9 @@ import SNS from './ssn.jsx';
 
 
 export default function Result(props) {
+  // 👇 ここに1行追加して、Resultに何が渡っているか確認する
+  console.log('Resultのprops.data:', props.data);
+
   return (
     <>
       <Container fixed　sx={{ marginTop: '20px',}} id={props.id}>
